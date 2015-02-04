@@ -1,0 +1,41 @@
+<% cache "CAT_"+@category.id.to_s+"_"+I18n.locale.to_s+"_"+(Time.now.to_i/10).to_s do %>
+
+<%# title @category.menu_label %>
+<ul class="breadcrumb">
+    <%= link_to "Home", root_path %> &gt;
+
+    <% for cat in @category.ancestors.reverse %>
+      <%= link_to h(cat.menu_label), category_path(cat.id) %> &gt;
+    <% end %>
+
+    <%= link_to h(@category.menu_label), category_path( @category.id) %> 
+</ul>
+<p id="notice"><%= notice %></p>
+
+<% empty=true %>
+<ul class="thumbnails">
+  <% for product in @category.products #.where(:online=>true).running.order(:einde) %>
+    <% empty=false %>
+      <%= render 'products/show', :product => product%>
+  <% end %>
+
+<% for cat in @category.children %>
+  <% for product in cat.products #.where(:online=>true).running.order(:einde) %>
+    <% empty=false %>
+    <%= render 'product/show', :product=> product%>
+  <% end %>
+<% end %>
+</ul>
+
+
+<% if empty %>
+  <fieldset>
+  <%= t :niets_gevonden %>
+  </fieldset>
+<% end %>
+
+  <%#= @category.parent_id %>
+  <%#= @category.title %>
+
+<% end %>
+

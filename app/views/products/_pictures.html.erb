@@ -1,0 +1,13 @@
+<div class="nested-fields">
+ <div id="pictures">
+    <%= f.simple_fields_for :pictures do |form| %>
+      <%= render 'picture_fields', :f => form %>
+    <% end %>
+  </div>
+
+  <div class="links">
+    <%= link_to_add_association icon('plus') + ' add picture', f, :pictures, :style => "margin-left: 180px;", :class => "btn btn-small" %>
+  </div>
+  <hr />
+
+</div>

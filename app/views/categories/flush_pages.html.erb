@@ -1,0 +1,13 @@
+<% title "Flush all cashed html pages" %>
+
+<p>
+<strong>Clearing following cashed pages:</strong>
+<ul>
+<% for dirinfo in Category.list_cashed_pages do %> 
+  <li> <%= dirinfo %> </li>
+<%end %>
+</ul>
+
+<% Category.flush_cashed_pages %>
+
+<h2>All done!</h2>

@@ -1,0 +1,25 @@
+       <li class="span2" style="width:210px; margin-left:0px;margin-right: 10px;">
+            <div class="thumbnail">
+              <%= link_to image_tag(product.thumbnail), product_path(product), :id=>"product_#{product.id}" %>
+              <div class="prod_description" style="height:40px;">
+                <div class="pull-left" style="width:150px; height:25px;">
+                  <b><%= product.name %></b> 
+                </div>
+                <div class="pull-right"> 
+                  &euro; <%= product.price || "Missing price" %> <br/>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+              <%= link_to "Details", product, :class=>"btn" %>
+              <%#= link_to "Add to cart", holiday_path, :class=>"btn btn-success pull-right" %>
+              <%= link_to "Buy", buy_product_path(product), :class=>"btn btn-success pull-right" %>
+              </p>
+            </div>
+            <% if false # if current_login && current_login.role?("Administrator") %>
+              <br/> 
+              <%= link_to 'Edit', edit_product_path(product), :class=>"btn btn-mini" %>
+              <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-mini" %>
+            <% end %>
+          </li>
+

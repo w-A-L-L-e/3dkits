@@ -1,0 +1,47 @@
+<fieldset>
+<legend> Edit menu categories </legend>
+
+<%= simple_form_for @category, :html=>{:class=>"form-horizontal"} do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div class="control-group string optional">
+      <%= f.label :parent_id , :class=>"string optional"%> 
+      <div class="controls">
+        <%= f.collection_select :parent_id, Category.all(:order => "title"), :id, :title, :include_blank => true %>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.input :title %>
+  </div>
+  <div class="field">
+    <%= f.input :menu_label %>
+  </div>
+  <div class="field">
+    <%= f.input :is_koopje %>
+  </div>
+  <div class="field">
+    <%= f.input :alle_koopjes %>
+  </div>
+   <div class="field">
+    <%= f.input :alle_veilingen %>
+  </div>
+  
+
+  </fieldset>
+  <div class="form-actions">
+    <%= link_to 'Cancel', categories_path, :class=>"btn" %>
+    <%= f.submit "Save", :class=>"btn btn-success" %>
+  </div>
+<% end %>

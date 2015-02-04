@@ -1,0 +1,8 @@
+<% cache "AUCTIONS_"+I18n.locale.to_s+"_"+(Time.now.to_i/10).to_s do %>
+
+  <% for veiling in Veiling.where( :nu_kopen=>false, :online=>true ).running.order(:einde).all do %>
+    <%= render '/categories/show_veiling', :veiling => veiling %>
+  <% end %>
+
+<% end %>
+

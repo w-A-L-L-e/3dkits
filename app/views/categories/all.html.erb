@@ -1,0 +1,18 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    function refreshPage(){
+      location.reload();
+    }
+  </script>
+<% end %>
+
+
+<% title t(:alle_aanbiedingen) %>
+
+<% for veiling in @veilingen %>
+
+  <%= render 'categories/show_veiling', :veiling => veiling %>
+
+<% end %>
+
+

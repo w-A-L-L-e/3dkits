@@ -8,7 +8,36 @@
 </head>
 <body>
 
-<%= yield %>
+<%#= yield %>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="" id="webshop-app">
+          <div class="alert" id="loading_container" style="display:none;">Loading ...</div>
+          <div id="flash_container"> </div>
+          <div class="row-fluid">
+            <div class="span10" style="margin-left:-10px; margin-right:0px; padding:0px;" >
+              <%= yield %>
+            </div>
+            <%= render :partial => "shared/shopping_cart" if @cart.present?%>
+          </div>
+
+        </div><!--/span-->
+
+      </div><!--/row-->
+
+      <footer>
+        <hr style="margin:5px 0px 1px 0px;">
+        <div class="pull-right">
+        </div>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <%= javascript_include_tag "application" %>
+    <%= yield :javascript %>
+    <%= yield :scripts %>
+
 
 </body>
 </html>

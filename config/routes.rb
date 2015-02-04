@@ -1,4 +1,32 @@
 Rails.application.routes.draw do
+
+  scope '(/:locale)' do
+    resources :pictures
+    resources :products do 
+      member do
+        get 'buy'
+        post 'pay'
+      end
+    end
+
+    resources :categories
+
+    resources :payments do 
+      member do
+        post 'bancontact_koper'
+        post 'bancontact_winnaar' 
+        get 'bancontact_koper'
+        get 'bancontact_winnaar' 
+      end
+    end
+
+    resources :payment_notifications #used for paypal
+    resources :payment_transactions  #used for paymill
+  end
+
+  root to: "products#index"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

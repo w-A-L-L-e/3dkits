@@ -1,0 +1,20 @@
+
+<div class="well">
+
+<% if @payment_transaction.present? %>
+  <p>
+    Thank you for your purchase. <br/>
+    Your transaction ID is # <%= @payment_transaction.id %>
+  </p>
+  <p>
+    We will inform you per e-mail as soon as your purchase has been shipped.
+  </p>
+
+<% else %>
+  Error: your payment could not be processed or you pressed refresh on this page.
+<% end %>
+
+</div>
+
+
+

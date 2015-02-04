@@ -1,0 +1,46 @@
+<% @cart = "yes we can!" %>
+
+<p id="notice"><%= notice %></p>
+<div class="span8 well">
+  <div class="span6">
+  <%#= image_tag product.first_picture %>
+    <% product.pictures.each do |picture| %>
+      <%= link_to image_tag(picture.pic.thumb, :title=>picture.title), picture.pic.url(:large) , "data-blightbox"=>"blightbox", :rel=>"single-gallery-id" %> 
+    <% end %>
+
+  </div>
+  <div class="span6">
+    <p>
+      <b>Name:</b>
+      <%= product.name %>
+    </p>
+
+    <p>
+      <b>Price:</b>
+      &euro; <%= product.price %>
+    </p>
+
+    <p>
+      <b>Description:</b>
+      <%= product.description.html_safe %>
+    </p>
+    <%#= link_to "Add to cart", holiday_path, :class=>"btn btn-success pull-right" %>
+    <%= link_to "Buy now", buy_product_path(product), :class=>"btn btn-success pull-right" %>
+    <%= link_to 'Back', products_path, :class=>"btn" %>
+    <% if current_login && current_login.role?("Administrator") %>
+      <%= link_to 'Edit', edit_product_path(product), :class=>"btn btn-primary" %> 
+    <% end %>
+
+  </div>
+</div>
+
+
+<%= content_for :javascript do %>
+  <script language="javascript">
+      $(document).ready(function (){
+          $("#pikame").PikaChoose();
+        });
+    </script>
+<% end %>
+
+

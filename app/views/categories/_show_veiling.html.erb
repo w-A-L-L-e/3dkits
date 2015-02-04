@@ -1,0 +1,98 @@
+<script type="text/javascript">
+
+  $(function () {
+    var veilingEinde = new Date( <%= veiling.einde_javascript %> );
+    $('#countdown_<%= veiling.id %>').countdown({until: veilingEinde, serverSync: holidayTime,  
+      compact: true, format: 'wdhms', description: '', onExpiry:eindeVeiling_<%= veiling.id %>});
+  });
+
+  function eindeVeiling_<%= veiling.id %>(){
+    $('#veiling_<%= veiling.id %>').fadeOut();
+    setTimeout(refreshPage, 50);
+  }
+
+  function holidayTime(){
+    //this breaks in IE 7! we need jquery parseDate most likely!
+    //time = new Date( <%= Veiling.syncServer %>);
+    var dateStr="<%= Time.now.to_s %>"; //returned from mysql timestamp/datetime field
+    var a=dateStr.split(" ");
+    d=a[0].split("-");
+    t=a[1].split(":");
+    var time = new Date(d[0],(d[1]-1),d[2],t[0],t[1],t[2]);
+
+    return time;
+  }
+
+
+
+</script>
+
+
+
+
+<%# cache "CV"+veiling.id.to_s+"_"+I18n.locale.to_s, :expire=>25.seconds do %>
+  <div class="block" style="text-align: left;width: 700px; padding:3px;" id="veiling_<%=veiling.id%>">
+    <div class="contentblock">
+      <div class='homepage_row' style='cursor: pointer;' onClick='document.location = "<%= veiling_url(veiling) %>"'>
+              
+               <div class="homepage_left">   
+                  <div class='homepage_afb'>
+                    <div id="veiling_slider" class="veiling_pics">
+                          <%# for v in @veiling.veiling_images %>
+                            <% if veiling.veiling_images.first && veiling.veiling_images.first.image_file.present? %>
+                              <% v = veiling.veiling_images.first %>
+                              <%= image_tag( v.image_file.thumb.url, :class=>"veiling_afbeelding_home" ) if v.image_file? %>
+                            <% else %>
+                              <%= image_tag("missing_veiling_image.png", :class=>"veiling_afbeelding_home") %>
+                            <% end %>
+                          <%# end %>
+                    </div>
+                  </div>
+
+                  <div class="browse-counter"><strong>Sluit in:</strong> <span id="countdown_<%= veiling.id %>"><%= veiling.einde %></span></div>
+              </div> 
+             
+              <div class="homepage_right">
+                      <b><h2> <%= veiling.title %></h2> </b>
+                      <%= shorten_text( veiling.beschrijving ) %>
+
+              </div>
+
+              <div class='homepage_info'>
+                    <table class="veiling_info">
+                    <tr>
+                    <td class="left">
+                      <div class="veiling_bieden_detail">
+                        <% if veiling.nu_kopen %>
+                          <b> <%= t :prijs %>:</b> <br/> 
+                          <strong> &euro; <%= veiling.hoogsteBod %> </strong>
+                        <% else %>
+                          <b><%= t :huidig_bod %>:</b> <br/>
+                          <strong> &euro; <%= afgerond veiling.hoogsteBod %> </strong>
+                        <% end %>
+                      </div>
+                      </td>
+                    <td class="center">
+                      <div class="veiling_bieden_detail">
+                          <b><%= t :aanbieder %></b>
+                            <br/>
+                            <%= veiling.verkoopnaam %>                    
+                      </div>
+                    </td>
+                    <td class="right">
+                      <div class="veiling_bieden_detail">
+                        <% if veiling.nu_kopen %>
+                            <%= button_to t(:nu_kopen), veiling_path(veiling), :class=>"vv30-blok-bieden", :title=>"Koop Nu", :method=>:get , :class=>'button-glossy' %>
+                        <% else %>
+                            <%= button_to t(:bied_mee), veiling_path(veiling), :class=>"vv30-blok-bieden", :title=>"Bieden op deze veiling", :method=>:get, :class=>'button-glossy' %>
+                        <% end %>
+                      </div>
+                    </td>
+                    </table>
+              </div>
+              
+
+      </div>
+    </div>
+  </div>
+<%# end %>

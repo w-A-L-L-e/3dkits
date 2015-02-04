@@ -1,0 +1,36 @@
+<%# title "Alle Categorieen" %>
+
+<%#= button_to "REFRESH ALL PAGES", flush_pages_categories_path, :confirm=>"Use this after done editing, it will regenerate all 500 html pages!",:method=>:put %>
+<br/>
+
+<%= link_to 'New Category', new_category_path, :class=>"btn" %>
+<br/><br/>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Categorie</th>
+    <th>Label, title</th>
+    <th colspan="3">Editing</th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td>
+      <% if category.parent_id %>
+        <%= Category.find_by_id(category.parent_id).title %> -> <%= category.title %>
+      <% else %>
+        <%= category.title %>
+      <% end %>
+    </td>
+    <td>
+      <%=category.menu_label if category.menu_label %> <br/>
+      <%= category.title %>
+    </td>
+    <td><%= link_to 'Show', category %></td>
+    <td><%= link_to 'Edit', edit_category_path(category) %></td>
+    <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= link_to 'New Category', new_category_path, :class=>"btn" %>

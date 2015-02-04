@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
-  attr_accessible :description, :name, :price
-  attr_accessible :pictures_attributes, :category_id
+
+  #TODO: this is now with strong params...
+  #attr_accessible :description, :name, :price
+  #attr_accessible :pictures_attributes, :category_id
   #has_many :product_pictures, :dependent=>:destroy
   #has_many :pictures, :through => :product_pictures #, :source=>''
   belongs_to :category

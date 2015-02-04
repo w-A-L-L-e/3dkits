@@ -1,0 +1,34 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(function () {
+      $('#home_slider').cycle('fade');
+      $.getScript("/<%= I18n.locale %>/alleKoopjesUpdate.js");
+    });
+
+    function refreshHome(){
+      $.getScript("/<%= I18n.locale %>/alleKoopjesUpdate.js");
+    }
+
+    function refreshPage(){
+      //location.reload();
+      setTimeout( refreshHome, 1000 ); //todo randomize this 3sec here! 
+    }
+  </script>
+
+<% end %>
+
+
+<% title @category.title %>
+
+<% @hide_flash=true %>
+<div class="alle_koopjes">
+  <%#= render '/categories/veilingen', :veilingen=>@veilingen %>
+      <center> 
+        <br/>
+        <br/>
+        LOADING...<br/><br/>
+        <%= image_tag 'spinner.gif' %>
+      </center>
+ 
+</div>
+

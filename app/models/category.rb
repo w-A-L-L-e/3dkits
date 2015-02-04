@@ -1,7 +1,7 @@
 require 'fileutils'
 class Category < ActiveRecord::Base
-  attr_accessible :title, :menu_label, :position
-  attr_accessible :parent_id, :is_koopje, :alle_koopjes, :alle_veilingen
+  #attr_accessible :title, :menu_label, :position
+  #attr_accessible :parent_id, :is_koopje, :alle_koopjes, :alle_veilingen
 
   acts_as_tree :parent_column_name => :parent_id, :order => :position
  

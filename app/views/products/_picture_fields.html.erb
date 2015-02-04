@@ -1,0 +1,18 @@
+<div class="form-inputs">
+
+    <%= link_to_remove_association icon('remove') + "", f, :class => "btn btn-small btn-danger pull-right", :style => "margin-left: 180px; margin-bottom: 10px;" %>
+    <%= f.input :title %>
+
+      <div class="control-group">
+      <%= f.label :picture, :class=>'string optional control-label' %>
+        <div class="controls">
+          <%= image_tag(f.object.pic.thumb, :class=>'picture') if f.object.pic.present? %>
+          <%= f.file_field :pic, :class=>'string optional' %>
+          <%= f.hidden_field :pic_cache %>
+        </div>
+      </div>
+
+
+</div>
+
+

@@ -1,0 +1,15 @@
+    
+    
+<% @cart = "yes we can!" %>
+    <% if false #current_login && current_login.role?("Administrator") %>
+      <%= link_to 'New Product', new_product_path, :class=>"btn btn-primary" %> <br/><br/>
+    <% end %>
+ 
+    <% if @products.count > 0 %>
+      <ul class="thumbnails">
+        <% @products.each do |product| %>
+          <%= render 'show', :product=>product %>
+        <% end %>
+      </ul>
+    <% end %>
+   

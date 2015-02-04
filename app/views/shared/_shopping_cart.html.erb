@@ -1,0 +1,18 @@
+<%#= content_for_or_pjax :shopping_cart do %>
+<div class="span2 " style="margin-left:0px; padding-left:10px; padding-bottom:10px;">
+    <div class="well" style="margin-top:0px;  padding-bottom:3px; padding-top:0px;">
+      <h3>Cart <%= icon "shopping-cart" %> </h3>
+    </div>
+      <% if false%>
+      <ul class="nav nav-list">
+        <li class="active">product 1</li>
+        <li>second</li> 
+      </ul>
+      <%#= link_to "Clear", "#", :class=>"btn btn-danger pull-left" %>
+      <%= link_to "Check Out", "#", :class=>"btn btn-success pull-right" %>
+      <% else %>
+      <% end %>
+</div>
+<%# end %>
+
+
