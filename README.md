@@ -32,4 +32,25 @@ http://railscasts.com/episodes/253-carrierwave-file-uploads
 
 ```
 
+rails g uploader image
+
+
 ```
+
+
+Note to self to fix a rmagick error like this:
+
+/Users/wschrep/.rvm/gems/ruby-2.1.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require': This installation of RMagick was configured with ImageMagick 6.8.7 but ImageMagick 6.8.9-8 is in use.
+
+just do 
+
+brew install imagemagick --build-from-source
+
+and then gem install rmagick
+and for spree fixing an error we do:
+
+gem install rmagick -v 2.13.2
+
+
+
+
