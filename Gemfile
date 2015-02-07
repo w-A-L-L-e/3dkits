@@ -46,3 +46,8 @@ group :development, :test do
   gem 'spring'
 end
 
+
+gem "rmagick"
+gem "carrierwave"
+
+

@@ -27,3 +27,9 @@ gem install rails -v 4.2.0
 ```
 
 
+For uploading images for our 3d printer products we use carrierwave explained here:
+http://railscasts.com/episodes/253-carrierwave-file-uploads
+
+```
+
+```
