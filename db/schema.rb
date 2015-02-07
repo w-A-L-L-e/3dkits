@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130826154354) do
+ActiveRecord::Schema.define(version: 20150207172550) do
 
   create_table "categories", force: :cascade do |t|
     t.integer  "parent_id"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20130826154354) do
   end
 
   add_index "category_translations", ["category_id"], name: "index_category_translations_on_category_id"
+
+  create_table "mercury_images", force: :cascade do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "payment_notifications", force: :cascade do |t|
     t.text     "params"
