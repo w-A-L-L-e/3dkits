@@ -54,3 +54,14 @@ gem install rmagick -v 2.13.2
 
 
 
+
+now we install and use mercury 
+
+rails g mercury:install
+
+
+rake mercury_engine:install:migrations
+
+rails g mercury:install:images
+
+

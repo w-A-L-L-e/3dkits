@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+    namespace :mercury do
+      resources :images
+    end
+  mount Mercury::Engine => '/'
   scope '(/:locale)' do
     resources :pictures
     resources :products do 
