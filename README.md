@@ -65,3 +65,11 @@ rake mercury_engine:install:migrations
 rails g mercury:install:images
 
 
+Ok so now it's time you start css'ing for a few days iow: slicing and dicing some designs into something that works on the browser.
+Or you can take a shortcut and just buy a nice looking commercial css theme and plug that into your rails app. You'll need to fix some issues to get the rails assets pipeline to work with
+it but in the end it does speed up your development A LOT!. Hey got a son, wife and other things to do on my day off ;). Anyway I highly recommend this site they have nice stylesheets:
+wrapbootstrap.com. Like said you can also just make your own custom look/feel too using http://getbootstrap.com. A more lightweight grid system is this one http://imperavi.com/kube/. 
+
+Anyway back to worky worky here... That's all folks!
+
+
