@@ -43,29 +43,36 @@ Note to self to fix a rmagick error like this:
 /Users/wschrep/.rvm/gems/ruby-2.1.0/gems/activesupport-4.2.0/lib/active_support/dependencies.rb:274:in `require': This installation of RMagick was configured with ImageMagick 6.8.7 but ImageMagick 6.8.9-8 is in use.
 
 just do 
-
+```
 brew install imagemagick --build-from-source
+```
 
 and then gem install rmagick
 and for spree fixing an error we do:
-
+```
 gem install rmagick -v 2.13.2
+```
 
+now we install and use mercury (this used to be a pain, and needed customizing the javascript to get it fully working. However nowadays it's easy peasy):
 
-
-
-
-now we install and use mercury 
-
+```
 rails g mercury:install
-
 
 rake mercury_engine:install:migrations
 
 rails g mercury:install:images
+```
 
+Finally get your database up and running like so:
+```
+rake db:create
+rake db:migrate
+```
 
-Ok so now it's time you start css'ing for a few days iow: slicing and dicing some designs into something that works on the browser.
+Presto and your done? Not quite but it's a good start. Now you can think about what models you want, routing, more features with gems and enjoy the inline debugging, migrations, csrf protection and the thousands of other features rails offers you now ;)
+
+Next job is normally you start css'ing for a few days in other words: slicing and dicing some designs into something that works on the browser.
+
 Or you can take a shortcut and just buy a nice looking commercial css theme and plug that into your rails app. You'll need to fix some issues to get the rails assets pipeline to work with
 it but in the end it does speed up your development A LOT!. Hey got a son, wife and other things to do on my day off ;). Anyway I highly recommend this site they have nice stylesheets:
 wrapbootstrap.com. Like said you can also just make your own custom look/feel too using http://getbootstrap.com. A more lightweight grid system is this one http://imperavi.com/kube/. 
