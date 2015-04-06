@@ -21,6 +21,7 @@
 //= require showcase
 //= require typeahead.min
 //= require zion
+//= require jquery-migrate-1.2.1.min
 //= require mercury
 // require_tree .
 
