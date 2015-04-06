@@ -51,9 +51,12 @@ gem "rmagick"
 gem "carrierwave"
 
 #inline editing of webpages and mails done right (explained here: http://railscasts.com/episodes/296-mercury-editor?view=asciicast).
-gem 'jquery-rails'
 #gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: 'a2b16bcdc9'
 gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury'
 
 gem "paperclip"
-gem 'paperclip'
+gem 'simple_form'
+
+gem "less-rails" 
+gem "therubyracer"
+

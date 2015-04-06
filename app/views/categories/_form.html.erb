@@ -18,7 +18,8 @@
     <div class="control-group string optional">
       <%= f.label :parent_id , :class=>"string optional"%> 
       <div class="controls">
-        <%= f.collection_select :parent_id, Category.all(:order => "title"), :id, :title, :include_blank => true %>
+        <%#= f.collection_select :parent_id, Category.all(:order => "title"), :id, :title, :include_blank => true %>
+        <%= collection_select(:category, :parent_id, Category.all, :id, :title , prompt: true) %>
       </div>
     </div>
   </div>

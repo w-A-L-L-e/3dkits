@@ -13,4 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require bootstrap
+//= require custom_checkbox_and_radio
+//= require custom_radio
+//= require html5
+//= require jquery.isotope.min
+//= require showcase
+//= require typeahead.min
+//= require zion
+//= require mercury
+// require_tree .
+
