@@ -78,5 +78,9 @@ it but in the end it does speed up your development A LOT!. Hey got a son, wife 
 wrapbootstrap.com. Like said you can also just make your own custom look/feel too using http://getbootstrap.com. A more lightweight grid system is this one http://imperavi.com/kube/. 
 
 Anyway back to worky worky here... That's all folks!
+Anyway initial clean rewritten version is up now on http://3dkits.be
+
+
+Got some stuff todo like add login's and whatnot (checkout devise or sourcery for that).
 
 
